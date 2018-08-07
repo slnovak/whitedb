@@ -1,0 +1,95 @@
+/*
+ * XXX: put this file under license if needed
+ *
+ */
+
+ /** @file config-w32.h
+ * Build configuration for Win32 platform.
+ *
+ * Based on auto-generated config.h. Should be manually synced whenever
+ * additional configuration parameters are added.
+ */
+
+/* Use additional validation checks */
+#cmakedefine CHECK @CHECK@
+
+/* Journal file directory */
+#cmakedefine DBLOG_DIR "@DBLOG_DIR@"
+
+/* Select locking protocol (undef to disable locking)
+ * 1 - reader preference spinlock
+ * 2 - writer preference spinlock
+ * 3 - task-fair queued lock
+ */
+#cmakedefine LOCK_PROTO @LOCK_PROTO@
+
+/* Encoded data is 64-bit */
+#cmakedefine HAVE_64BIT_GINT @HAVE_64BIT_GINT@
+
+/* Define if you have POSIX threads libraries and header files. */
+#cmakedefine HAVE_PTHREAD @HAVE_PTHREAD@
+
+/* Compile with raptor rdf library */
+#cmakedefine HAVE_RAPTOR @HAVE_RAPTOR@
+
+/* Define to 1 if your C compiler doesn't accept -c and -o together. */
+#cmakedefine NO_MINUS_C_MINUS_O @NO_MINUS_C_MINUS_O@
+
+/* Name of package */
+#cmakedefine PACKAGE "@PACKAGE@"
+
+/* Define to the address where bug reports for this package should be sent. */
+#cmakedefine PACKAGE_BUGREPORT "@PACKAGE_BUG_REPORT@"
+
+/* Define to the full name of this package. */
+#cmakedefine PACKAGE_NAME "@PACKAGE_NAME@"
+
+/* Define to the full name and version of this package. */
+#cmakedefine PACKAGE_STRING "@PACKAGE_STRING@"
+
+/* Define to the one symbol short name of this package. */
+#cmakedefine PACKAGE_TARNAME "@PACKAGE_TARNAME@"
+
+/* Define to the version of this package. */
+#cmakedefine PACKAGE_VERSION "@PACKAGE_VERSION@"
+
+/* Define to necessary symbol if this constant uses a non-standard name on
+   your system. */
+#cmakedefine PTHREAD_CREATE_JOINABLE @PTHREAD_CREATE_JOINABLE@
+
+/* String hash size (% of db size) */
+#cmakedefine STRHASH_SIZE @STRHASH_SIZE@
+
+/* Use chained T-tree index nodes */
+#cmakedefine TTREE_CHAINED_NODES @TTREE_CHAINED_NODES@
+
+/* Use single-compare T-tree mode */
+#cmakedefine TTREE_SINGLE_COMPARE @TTREE_SINGLE_COMPARE@
+
+/* Use record banklinks */
+#cmakedefine USE_BACKLINKING @USE_BACKLINKING@
+
+/* Enable child database support */
+#cmakedefine USE_CHILD_DB @USE_CHILD_DB@
+
+/* Use dblog module for transaction logging */
+#cmakedefine USE_DBLOG @USE_DBLOG@
+
+/* Use match templates for indexes */
+#cmakedefine USE_INDEX_TEMPLATE @USE_INDEX_TEMPLATE@
+
+/* Enable reasoner */
+#cmakedefine USE_REASONER @USE_REASONER@
+
+/* Version number of package */
+#cmakedefine VERSION "@VERSION@"
+
+/* Package major version */
+#cmakedefine01 VERSION_MAJOR @VERSION_MAJOR@
+
+/* Package minor version */
+#cmakedefine01 VERSION_MINOR @VERSION_MINOR@
+
+/* Package revision number */
+#cmakedefine01 VERSION_REV @VERSION_REV@
+
