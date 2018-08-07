@@ -48,9 +48,9 @@ else()
 endif()
 
 if(MSVC)
-    configure_file(config.h.in config-w32.h)
+    configure_file(config.h.in ${whitedb_SOURCE_DIR}/config-w32.h)
 else()
-    configure_file(config.h.in config.h)
+    configure_file(config.h.in #{whitedb_SOURCE_DIR}/config.h)
 endif()
 
 set(whitedb_sources
