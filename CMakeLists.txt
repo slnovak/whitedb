@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(whitedb LANGUAGES C)
 
-set(VERSION 0.7.3)
+set(VERSION 0.8-alpha)
 
 include(GNUInstallDirs)
 
@@ -12,7 +12,42 @@ set(INSTALL_TARGETS_DEFAULT_ARGS
     RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 )
 
+# See config.h.in for documentation.
+option(CHECK "Use additional validation checks" 1)
+option(LOCK_PROTO "Select locking protocol" 1)
 option(USE_CHILD_DB "Enable child database support" on)
+
+set(HAVE_64BIT_GINT off)
+set(HAVE_PTHREAD off)
+set(HAVE_RAPTOR off)
+set(NO_MINUS_C_MINUS_O off)
+set(PACKAGE_NAME "WhiteDB")
+set(PACKAGE_STRING "WhiteDB 0.8-alpha")
+set(PACKAGE_TARNAME "whitedb")
+set(PTHREAD_CREATE_JOINABLE off)
+set(STRHASH_SIZE 2)
+set(TTREE_CHAINED_NODES 1)
+set(TTREE_SINGLE_COMPARE 1)
+set(USE_BACKLINKING 1)
+set(USE_DBLOG off)
+set(USE_INDEX_TEMPLATE 1)
+set(USE_REASONER off)
+set(VERSION_MAJOR 0)
+set(VERSION_MINOR 8)
+set(VERSION_REV 0)
+
+find_package(Threads)
+if(Threads_FOUND)
+    set(HAVE_PTHREAD 1)
+endif()
+
+if(MSVC)
+    set(DBLOG_DIR "c:\\windows\\temp")
+else()
+    set(DBLOG_DIR "/tmp")
+endif()
+
+configure_file(config.h.in config.h)
 
 set(whitedb_sources
     Db/dballoc.c
@@ -56,9 +91,10 @@ set(whitedb_headers
 
 add_library(whitedb ${whitedb_sources})
 add_library(WhiteDB::whitedb ALIAS whitedb)
+target_link_libraries(whitedb m)
 
 add_executable(wgdb Main/wgdb.c)
-target_link_libraries(wgdb whitedb)
+target_link_libraries(wgdb whitedb m)
 
 target_include_directories(whitedb INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Db>
