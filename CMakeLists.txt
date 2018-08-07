@@ -47,7 +47,11 @@ else()
     set(DBLOG_DIR "/tmp")
 endif()
 
-configure_file(config.h.in config.h)
+if(MSVC)
+    configure_file(config.h.in config-w32.h)
+else()
+    configure_file(config.h.in config.h)
+endif()
 
 set(whitedb_sources
     Db/dballoc.c
